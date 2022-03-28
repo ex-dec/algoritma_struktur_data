@@ -8,38 +8,37 @@ struct simpul{
     Node *next;
 };
 
-Node *tambah, *hapus;
+Node *s, *tambah, *hapus;
 
-void inisial(Node *);
+void inisial();
 
 // pengecekan stack
-int empty(Node *);
+int empty();
 
 // operasi stack
-void push(Node *, typeName);
-typeName pop(Node *);
+void push(typeName);
+typeName pop();
 
 // Fungsi dari SLL
 void alokasi();
 void bebas();
 
-void masukan(Node *);
-void keluaran(Node *);
-void show(Node *);
-char menu(char,Node *);
+void masukan();
+void keluaran();
+void show();
+char menu(char);
 
 int main(){
     char pilih = '0';
-    Node *s;
-    inisial(s);
+    inisial();
     puts("Stack SLL");
     while (pilih != '4')
-        pilih = menu(pilih, s);
+        pilih = menu(pilih);
     puts("Terima kasih....");
     return 0;
 }
 
-char menu(char opsi, Node *s){
+char menu(char opsi){
     puts("Menu");
     puts("1. Mengisi Stack (PUSH)");
     puts("2. Mengambil isi Stack (POP)");
@@ -50,13 +49,13 @@ char menu(char opsi, Node *s){
     fflush(stdin);
     switch (opsi) {
     case '1':
-        masukan(s);
+        masukan();
         break;
     case '2':
-        keluaran(s);
+        keluaran();
         break;
     case '3':
-        show(s);
+        show();
         break;
     case '4':
         break;
@@ -68,15 +67,15 @@ char menu(char opsi, Node *s){
     return opsi;
 }
 
-void inisial(Node *s){
+void inisial(){
     s = NULL;
 }
 
-int empty(Node *s){
+int empty(){
     return s == NULL;
 }
 
-void push(Node *s, typeName x){
+void push(typeName x){
     alokasi();
     tambah->data = x;
     if (s != NULL)
@@ -84,7 +83,7 @@ void push(Node *s, typeName x){
     s = tambah;
 }
 
-typeName pop(Node *s){
+typeName pop(){
     typeName temp;
     if (s == NULL){
         puts("Stack kosong");
@@ -115,21 +114,21 @@ void bebas(){
     hapus = NULL;
 }
 
-void masukan(Node *s){
+void masukan(){
     typeName x;
     printf("nilai yang akan disimpan : ");
     x = getchar();
     fflush(stdin);
-    push(s, x);
+    push(x);
 }
 
-void keluaran(Node *s){
+void keluaran(){
     typeName x;
     x = pop(s);
     printf("%c\n", x);
 }
 
-void show(Node *s){
+void show(){
     Node *tampil = s;
     if (s == NULL)
         puts("stack kosong");
