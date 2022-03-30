@@ -45,8 +45,8 @@ char menu(char opsi){
     puts("3. Menampilkan isi Stack -> LIFO");
     puts("4. Keluar");
     printf("Masukkan pilihan anda : ");
-    opsi = getchar();
-    fflush(stdin);
+    scanf("%c", &opsi);
+    getchar();
     switch (opsi) {
     case '1':
         masukan();
@@ -117,8 +117,8 @@ void bebas(){
 void masukan(){
     typeName x;
     printf("nilai yang akan disimpan : ");
-    x = getchar();
-    fflush(stdin);
+    scanf("%c", &x);
+    getchar();
     push(x);
 }
 

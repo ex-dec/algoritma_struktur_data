@@ -41,8 +41,8 @@ char menu(char opsi, stack *s){
     puts("3. Menampilkan isi Stack -> LIFO");
     puts("4. Keluar");
     printf("Masukkan pilihan anda : ");
-    fflush(stdin);
     scanf("%c", &opsi);
+    getchar();
     switch (opsi) {
     case '1':
         masukan(s);
@@ -99,8 +99,8 @@ typeName pop(stack *s){
 void masukan(stack *s){
     typeName x;
     printf("nilai yang akan disimpan : ");
-    fflush(stdin);
     scanf("%c", &x);
+    getchar();
     push(s, x);
 }
 
@@ -115,7 +115,7 @@ void show(stack *s){
         puts("stack kosong");
     else {
         puts("Isi dari stack");
-        for (int i = s->count; i >= 0; i--)
+        for (int i = s->count; i > 0; i--)
             printf("%c\n", s->data[i]);
     }
 }

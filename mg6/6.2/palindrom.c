@@ -40,8 +40,9 @@ char menu(stack *s){
     char temp[max];
     inisial(s);
     printf("Masukkan kata yang dicek (maksimal 30 karakter) : ");
-    gets(temp);
-    //fgets(temp, sizeof(temp), stdin);
+    //gets(temp);
+    fgets(temp, sizeof(temp), stdin);
+    temp[strcspn(temp, "\n")] = 0;
     fflush(stdin);
     if (palindrom(s, temp))
         printf("%s adalah palindrom", temp);
@@ -49,8 +50,9 @@ char menu(stack *s){
         printf("%s bukan palindrom", temp);
     puts("\n");
     printf("Lagi (y/t)? ");
-    confirm = getchar();
-    fflush(stdin);
+    scanf("%c", &confirm);
+    // confirm = getchar();
+    getchar();
     puts("");
     return confirm;
 }
