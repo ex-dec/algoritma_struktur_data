@@ -40,8 +40,8 @@ char menu(char opsi, queue *q){
     puts("3. Menampilkan isi Queue => FIFO");
     puts("4. Keluar");
     printf("Masukkan pilihan anda : ");
-    fflush(stdin);
     scanf("%c", &opsi);
+    getchar();
     switch (opsi) {
     case '1':
         masukan(q);
@@ -65,8 +65,8 @@ char menu(char opsi, queue *q){
 void masukan(queue *q){
     typeName temp;
     printf("Masukkan Data Anda : ");
-    fflush(stdin);
     scanf("%c", &temp);
+    getchar();
     enqueue(q, temp);
 }
 

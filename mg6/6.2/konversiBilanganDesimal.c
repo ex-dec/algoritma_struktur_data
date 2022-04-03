@@ -19,12 +19,13 @@ int empty(stack *);
 void push(stack *, typeName);
 typeName pop(stack *);
 
-// menu stack
 void masukan(stack *);
 void keluaran(stack *);
 void show(stack *);
 char menu(stack *);
 int palindrom(stack *, char []);
+
+// void deleteEnter(char []);
 
 int main(){
     char confirm = 'y';
