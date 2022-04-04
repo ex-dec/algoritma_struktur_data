@@ -4,6 +4,7 @@
 typedef char typeName;
 typedef struct simpul Node;
 struct simpul{
+    int prio;
     typeName data;
     Node *next;
 };
@@ -35,15 +36,15 @@ int main(){
     inisialisasi(&q);
     while (opsi != '4')
         opsi = menu(opsi, &q);
-    puts("Terima kasih!!!");
+    puts("Terima Kasih!!!");
     return 0;
 }
 
 char menu(char opsi, queue *q){
-    puts("Menu queue using Lingked List");
-    puts("1. Mengisi Queue (ENQUEUE)");
-    puts("2. Mengambil isi Queue (DEQUEUE)");
-    puts("3. Menampilkan isi Queue -> FIFO");
+    puts("Menu queue using LINKED LIST");
+    puts("1. Mengisi queue");
+    puts("2. Mengambil isi queue");
+    puts("3. Menampilkan isi queue");
     puts("4. Keluar");
     printf("Masukkan pilihan anda : ");
     scanf("%c", &opsi);
@@ -68,6 +69,39 @@ char menu(char opsi, queue *q){
     return opsi;
 }
 
+void masukan(queue *q){
+    alokasi();
+    printf("Masukkan data anda : ");
+    scanf("%c", &p->data);
+    getchar();
+    printf("Nilai prioritasnya : ");
+    scanf("%d", &p->prio);
+    getchar();
+    enqueue(q);
+}
+
+void keluaran(queue *q){
+    typeName temp;
+    temp = dequeue(q);
+    if (temp != ' ')
+        printf("Data yang diambil adalah \n%c\n", temp);
+}
+
+void tampil(queue *q){
+    p = q->front;
+    if (kosong(q))
+        puts("Queue kosong!!");
+    else {
+        puts("Isi dari queue saat ini adalah");
+        puts("Data\tPrioritas");
+        while (p != NULL) {
+            printf("%c\t%d\n", p->data, p->prio);
+            p = p->next;
+        }
+        puts("");
+    }
+}
+
 void inisialisasi(queue *q){
     q->front = NULL;
     q->rear = NULL;
@@ -78,11 +112,27 @@ int kosong(queue *q) {
 }
 
 void enqueue(queue *q){
+    Node *tail = q->front;
+    Node *ptail;
     if (kosong(q))
         q->front = q->rear = p;
-    else{
+    else if (q->front->prio > p->prio) {
+        p->next = q->front;
+        q->front = p;
+    } else if (q->rear->prio < p->prio) {
         q->rear->next = p;
         q->rear = p;
+    } else{
+        while (tail->prio <= p->prio) {
+            if (tail->next == NULL) {
+                tail->next = p;
+                return;
+            }
+            ptail = tail;
+            tail = tail->next;
+        }
+        p->next = tail;
+        ptail->next = p;
     }
 }
 
@@ -115,33 +165,4 @@ void alokasi(){
 void bebas() {
     free(hapus);
     hapus = NULL;
-}
-
-void masukan(queue *q){
-    alokasi();
-    printf("Masukkan data anda : ");
-    scanf("%c", &p->data);
-    getchar();
-    enqueue(q);
-}
-
-void keluaran(queue *q){
-    typeName temp;
-    temp = dequeue(q);
-    if (temp != ' ')
-        printf("Data yang diambil adalah \n%c\n", temp);
-}
-
-void tampil(queue *q){
-    p = q->front;
-    if (kosong(q))
-        puts("Queue kosong!!");
-    else {
-        puts("Isi dari queue");
-        while (p != NULL) {
-            printf("%c\n", p->data);
-            p = p->next;
-        }
-        puts("");
-    }
 }
