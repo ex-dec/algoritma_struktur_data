@@ -74,15 +74,14 @@ void dup(int x[], int y[]){
 }
 
 // void generate(int arr[]) {
-    // printf("Masukkan n : ");
-    // scanf("%d", &n);
-    // getchar();
-    // n = 10;
-    // puts("Melakukan generate...");
-    // arr[] = {3,10,4,6,8,9,7,2,1,5};
-    // for (int i = 0; i < n; i++)
-    //     arr[i] = random();
+//     printf("Masukkan n : ");
+//     scanf("%d", &n);
+//     getchar();
+//     puts("Melakukan generate...");
+//     for (int i = 0; i < n; i++)
+//         arr[i] = random() / 1000000;
 // }
+
 
 void Insertion(int arr[], char mode){
     int i = 1;
@@ -90,6 +89,14 @@ void Insertion(int arr[], char mode){
     while (i < n) {
         int key = arr[i];
         int j = i - 1;
+        // if (mode == '1')
+        //     kondisi = arr[j] > key;
+        // else
+        //     kondisi = arr[j] < key;
+        // while (j >= 0 && kondisi) {
+        //     arr[j+1] = arr[j];
+        //     j--;
+        // }
         if (mode == '1'){
             while (j >= 0 && arr[j] > key) {
                 arr[j+1] = arr[j];
