@@ -102,7 +102,6 @@ void SeqSearchUnsort(int arr[], int cari){
 void SeqSearch(int arr[], int cari){
     int konfirm = 0;
     int i = 0;
-    puts("Mengurutkan array terlebih dahulu");
     Shell(arr);
     start = clock();
     while (i < n && !konfirm) {
@@ -122,7 +121,6 @@ void BinSearch(int arr[], int cari){
     int R = n - 1;
     int konfirm = 0;
     int M;
-    puts("Mengurutkan array terlebih dahulu");
     Shell(arr);
     start = clock();
     while (L <= R && !konfirm) {
