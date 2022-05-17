@@ -21,5 +21,26 @@ int main(){
 }
 
 char menu(int arr[]){
+    char pilihan;
+    puts("Menu Search");
+    puts("1. Sequential Search - unsorted");
+    puts("2. Sequential Search - sorted");
+    puts("3. Binary Search - sorted");
+    printf("Masukkan pilihan anda : ");
+    scanf("");
+}
 
+void dup(int x[], int y[]){
+    for (int i = 0; i < n; i++) {
+        x[i] = y[i];
+    }
+}
+
+void generate(int arr[]) {
+    printf("Masukkan n : ");
+    scanf("%d", &n);
+    getchar();
+    puts("Melakukan generate...");
+    for (int i = 0; i < n; i++)
+        arr[i] = random() / 1000000;
 }
