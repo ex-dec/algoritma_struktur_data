@@ -12,7 +12,6 @@ int main() {
     int arrA[] = {3,10,4,6,8,9,7,2,1,5};
     int cari;
     puts("Sequential Search - sorted");
-
     printf("Masukkan data yang ingin dicari : ");
     scanf("%d", &cari);
     SeqSearch(arrA, cari);

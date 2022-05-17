@@ -5,7 +5,6 @@ void BinSearch(int [], int);
 void Shell(int []);
 void swap(int *, int *);
 
-
 int n = 10;
 
 int main() {
