@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #define max 1000000
 
 // Fungsi pilihan menu
@@ -10,10 +11,16 @@ void dup(int [], int []);
 void generate(int []);
 void swap(int *, int *);
 
+void SeqSearchUnsort(int [], int );
+void SeqSearch(int [], int );
+void BinSearch(int [], int );
+
 void Shell(int []);
 void swap(int *, int *);
 
-int n;
+void tampil (int []);
+
+int n, j, konfirm;
 clock_t start, end;
 
 int main(){
@@ -38,30 +45,35 @@ char menu(int arr[]){
     puts("3. Binary Search - sorted");
     puts("4. Keluar");
     printf("Masukkan pilihan anda : ");
-    scanf("%d", &pilihan);
+    scanf("%c", &pilihan);
     getchar();
-    if (pilihan != '1' || pilihan != '2' || pilihan != '3') {
+    if (pilihan == '1' || pilihan == '2' || pilihan == '3') {
         printf("Masukkan data yang ingin dicari : ");
         scanf("%d", &cari);
+        getchar();
     }
-    switch() {
+    switch (pilihan) {
     case '1':
-        SeqSearchUnsort(arr, cari);
+        SeqSearchUnsort(temp, cari);
         break;
     case '2':
-        SeqSearch(arr, cari);
+        SeqSearch(temp, cari);
         break;
     case '3':
-        BinSearch(arr, cari);
+        BinSearch(temp, cari);
         break;
     case '4':
         break;
     default:
-        printf("Pilihan tidak ada");
+        puts("Pilihan tidak ada");
         break;
     }
-    if (pilihan != '1' || pilihan != '2' || pilihan != '3') {
+    if (pilihan == '1' || pilihan == '2' || pilihan == '3') {
         end = clock();
+        if (konfirm)
+            printf("Data %d ditemukan pada urutan ke %d\n", cari, j+1);
+        else
+            printf("Data %d tidak ditemukan\n", cari);
         waktu = ((double) (end - start)) / CLOCKS_PER_SEC;
         printf("Waktu komputasi : %lf\n", waktu);
     }
@@ -78,68 +90,61 @@ void generate(int arr[]) {
     printf("Masukkan n : ");
     scanf("%d", &n);
     getchar();
+    srand(time(NULL));
     puts("Melakukan generate...");
     for (int i = 0; i < n; i++)
-        arr[i] = random() / 1000000;
+        arr[i] = rand() % 100 + 1;
+    tampil(arr);
 }
 
 void SeqSearchUnsort(int arr[], int cari){
-    int konfirm = 0;
-    int i = 0;
+    konfirm = 0;
+    j = 0;
     start = clock();
-    while (i < n && !konfirm) {
-        if (arr[i] == cari)
+    while (j < n && !konfirm) {
+        if (arr[j] == cari)
             konfirm = 1;
         else
-            i++;
+            j++;
     }
-    if (konfirm)
-        printf("Data %d ditemukan pada urutan ke %d\n", cari, i+1);
-    else
-        printf("Data %d tidak ditemukan\n", cari);
 }
 
 void SeqSearch(int arr[], int cari){
-    int konfirm = 0;
-    int i = 0;
+    konfirm = 0;
+    j = 0;
     Shell(arr);
     start = clock();
-    while (i < n && !konfirm) {
-        if (arr[i] == cari)
+    while (j < n && !konfirm) {
+        if (arr[j] == cari)
             konfirm = 1;
         else
-            i++;
+            j++;
     }
-    if (konfirm)
-        printf("Data %d ditemukan pada urutan ke %d\n", cari, i+1);
-    else
-        printf("Data %d tidak ditemukan\n", cari);
 }
 
 void BinSearch(int arr[], int cari){
     int L = 0;
     int R = n - 1;
-    int konfirm = 0;
     int M;
+    konfirm = 0;
     Shell(arr);
     start = clock();
     while (L <= R && !konfirm) {
         M = (L + R) / 2;
-        if (arr[M] == cari)
+        if (arr[M] == cari) {
             konfirm = 1;
+            j = M;
+        }
         else if (cari < arr[M])
             R = M - 1;
         else
             L = M + 1;
     }
-    if (konfirm)
-        printf("Data %d ditemukan pada urutan ke %d\n", cari, M + 1);
-    else
-        printf("Data %d tidak ditemukan\n", cari);
+
 }
 
 void Shell(int arr[]){
-    int key = n, konfirm;
+    int key = n;
     while (key > 1) {
         key = key / 2;
         konfirm = 1;
@@ -160,4 +165,10 @@ void swap(int *a, int *b){
     c = *a;
     *a = *b;
     *b = c;
+}
+
+void tampil (int arr[]){
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    puts("");
 }

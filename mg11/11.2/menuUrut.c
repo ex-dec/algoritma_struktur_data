@@ -137,9 +137,9 @@ void Insertion(struct siswa arr[], char mode, char dasarUrut){
                 kondisi = arr[j].no < key.no;
         } else if(dasarUrut == '2'){
             if (mode == '1')
-                kondisi = strcasecmp(arr[j].nama, key.nama);
+                kondisi = strcasecmp(arr[j].nama, key.nama) < 0;
             else
-                kondisi = strcasecmp(key.nama, arr[j].nama);
+                kondisi = strcasecmp(arr[j].nama, key.nama) > 0;
         } else if(dasarUrut == '3'){
             if (mode == '1')
                 kondisi = arr[j].nilai > key.nilai;
@@ -169,9 +169,9 @@ void Selection(struct siswa arr[], char mode, char dasarUrut){
                     kondisi = arr[j].no > arr[min].no;
             } else if(dasarUrut == '2'){
                 if (mode == '1')
-                    kondisi = strcmp(arr[j].nama, arr[min].nama);
+                    kondisi = strcasecmp(arr[j].nama, arr[min].nama) < 0;
                 else
-                    kondisi = strcmp(arr[min].nama, arr[j].nama);
+                    kondisi = strcasecmp(arr[j].nama, arr[min].nama) > 0;
             } else if(dasarUrut == '3'){
                 if (mode == '1')
                     kondisi = arr[j].nilai < arr[min].nilai;
@@ -203,9 +203,9 @@ void Shell(struct siswa arr[], char mode, char dasarUrut){
                         kondisi = arr[i].no < arr[i+key].no;
                 } else if(dasarUrut == '2'){
                     if (mode == '2')
-                        kondisi = strcasecmp(arr[i].nama, arr[i+key].nama);
+                        kondisi = strcasecmp(arr[i].nama, arr[i+key].nama) < 0;
                     else
-                        kondisi = strcasecmp(arr[i+key].nama, arr[i].nama);
+                        kondisi = strcasecmp(arr[i].nama, arr[i+key].nama) > 0;
                 } else if(dasarUrut == '3'){
                     if (mode == '1')
                         kondisi = arr[i].nilai > arr[i+key].nilai;
@@ -237,9 +237,9 @@ void Bubble(struct siswa arr[], char mode, char dasarUrut){
                     kondisi = arr[j].no < arr[j+1].no;
             } else if(dasarUrut == '2'){
                 if (mode == '1')
-                    kondisi = strcmp(arr[j].nama, arr[j+1].nama);
+                    kondisi = strcasecmp(arr[j].nama, arr[j+1].nama) > 0;
                 else
-                    kondisi = strcmp(arr[j+1].nama, arr[j].nama);
+                    kondisi = strcasecmp(arr[j].nama, arr[j+1].nama) < 0;
             } else if(dasarUrut == '3'){
                 if (mode == '1')
                     kondisi = arr[j].nilai > arr[j+1].nilai;
