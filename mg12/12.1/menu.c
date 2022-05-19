@@ -249,19 +249,21 @@ int QuickPartition(int arr[], int p, int r, char mode){
     int i = p;
     int j = r;
     int x = arr[p];
-    int kondisi;
+    int kondisi1, kondisi2;
     while (i < j) {
-        if (mode == '1'){
-            while(arr[i] < x)
+        do {
+            if (mode == '1'){
+                kondisi1 = arr[i] < x;
+                kondisi2 = arr[j] > x;
+            } else {
+                kondisi1 = arr[i] > x;
+                kondisi2 = arr[j] < x;
+            }
+            if (kondisi1)
                 i++;
-            while(arr[j] > x)
+            if (kondisi2)
                 j--;
-        } else {
-            while (arr[i] > x)
-                i++;
-            while (arr[j] < x)
-                j--;
-        }
+        } while (kondisi1 || kondisi2);
         if (i < j) {
             swap(&arr[i], &arr[j]);
             j--;

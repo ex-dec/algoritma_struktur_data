@@ -39,7 +39,7 @@ char menu(int arr[]){
     double waktu;
     int temp[n];
     dup(temp, arr);
-    puts("Menu Search");
+    printf("Menu Search %d data\n", n);
     puts("1. Sequential Search - unsorted");
     puts("2. Sequential Search - sorted");
     puts("3. Binary Search - sorted");
@@ -93,7 +93,7 @@ void generate(int arr[]) {
     srand(time(NULL));
     puts("Melakukan generate...");
     for (int i = 0; i < n; i++)
-        arr[i] = rand() % 100 + 1;
+        arr[i] = rand() % 1000 + 1;
     tampil(arr);
 }
 

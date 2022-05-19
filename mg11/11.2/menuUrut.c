@@ -130,25 +130,28 @@ void Insertion(struct siswa arr[], char mode, char dasarUrut){
     while (i < n) {
         struct siswa key = arr[i];
         int j = i - 1;
-        if (dasarUrut == '1') {
-            if (mode == '1')
-                kondisi = arr[j].no > key.no;
-            else
-                kondisi = arr[j].no < key.no;
-        } else if(dasarUrut == '2'){
-            if (mode == '1')
-                kondisi = strcasecmp(arr[j].nama, key.nama) < 0;
-            else
-                kondisi = strcasecmp(arr[j].nama, key.nama) > 0;
-        } else if(dasarUrut == '3'){
-            if (mode == '1')
-                kondisi = arr[j].nilai > key.nilai;
-            else
-                kondisi = arr[j].nilai < key.nilai;
-        }
-        while (j >= 0 && kondisi) {
-            arr[j+1] = arr[j];
-            j--;
+        while (j >= 0) {
+            if (dasarUrut == '1') {
+                if (mode == '1')
+                    kondisi = arr[j].no > key.no;
+                else
+                    kondisi = arr[j].no < key.no;
+            } else if(dasarUrut == '2'){
+                if (mode == '1')
+                    kondisi = strcasecmp(arr[j].nama, key.nama) > 0;
+                else
+                    kondisi = strcasecmp(arr[j].nama, key.nama) < 0;
+            } else if(dasarUrut == '3'){
+                if (mode == '1')
+                    kondisi = arr[j].nilai > key.nilai;
+                else
+                    kondisi = arr[j].nilai < key.nilai;
+            }
+            if (kondisi) {
+                arr[j+1] = arr[j];
+                j--;
+            } else
+                break;
         }
         arr[j+1] = key;
         i++;
