@@ -1,0 +1,19 @@
+    for (int i = 0; i < panjang; i++) {
+        alokasi(masuk[i]);
+        if (root == NULL)
+            root->data = masuk[i];
+        else {
+            p = root;
+            q = root;
+            if (p != NULL) {
+                
+            }
+            
+            
+            if (p->data > masuk[i]) {
+                root->kiri->data = masuk[i];
+            }
+        }
+        
+        
+    }

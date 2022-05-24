@@ -140,7 +140,6 @@ void BinSearch(int arr[], int cari){
         else
             L = M + 1;
     }
-
 }
 
 void Shell(int arr[]){
